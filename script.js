@@ -212,10 +212,17 @@ function changeLinkColorOnscroll(links, parent) {
 
 
 
+// Page Loader
+// Shows a bouncing-bubble loader over the page and hides it only once
+// EVERYTHING has finished loading — HTML, CSS, images, video — not just
+// the DOM structure. This is why 'load' is used instead of
+// 'DOMContentLoaded' (which fires too early and was causing images to
+// still be popping in after the loader had already disappeared).
+
 let pageLoader = document.querySelector('.page-loader');
- 
+
 if (pageLoader) {
-    document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('load', () => {
         pageLoader.classList.add('loader-hidden');
         pageLoader.addEventListener('transitionend', () => {
             pageLoader.style.display = 'none';
